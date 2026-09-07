@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ayman Osama | Digital IC Verification Engineer Portfolio</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f7ff',
+              100: '#e0effe',
+              200: '#bae0fd',
+              300: '#7cc7fb',
+              400: '#38a9f8',
+              500: '#0e8ce9',
+              600: '#026fc7',
+              700: '#0358a1',
+              800: '#074b84',
+              900: '#0c3f6e',
+              950: '#082849'
+            },
+            silicon: {
+              50: '#f8fafc',
+              100: '#f1f5f9',
+              200: '#e2e8f0',
+              700: '#334155',
+              800: '#1e293b',
+              900: '#0f172a',
+              950: '#070d18'
+            },
+            accent: {
+              cyan: '#06b6d4',
+              emerald: '#10b981',
+              amber: '#f59e0b',
+              violet: '#8b5cf6'
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    /* Custom semiconductor grid background pattern */
+    .circuit-bg {
+      background-color: #070d18;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(14, 140, 233, 0.15) 0%, transparent 65%),
+        linear-gradient(rgba(15, 23, 42, 0.6) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 23, 42, 0.6) 1px, transparent 1px);
+      background-size: 100% 100%, 36px 36px, 36px 36px;
+    }
+    
+    .glow-cyan {
+      box-shadow: 0 0 25px -5px rgba(6, 182, 212, 0.35);
+    }
+    .glow-blue {
+      box-shadow: 0 0 30px -8px rgba(14, 140, 233, 0.4);
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #070d18;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #0e8ce9;
+    }
+
+    .shimmer-text {
+      background: linear-gradient(90deg, #93c5fd 0%, #38bdf8 50%, #67e8f9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Pulse animation for IC logic nodes */
+    @keyframes pulse-node {
+      0%, 100% { opacity: 0.3; transform: scale(0.95); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
+    .pulse-effect {
+      animation: pulse-node 3s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="circuit-bg text-slate-300 font-sans antialiased selection:bg-brand-500 selection:text-white min-h-screen flex flex-col">
+
+  <!-- Top Navigation Bar -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-silicon-950/80 border-b border-slate-800/80 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Logo & Status -->
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-accent-cyan flex items-center justify-center text-white font-mono font-bold text-lg shadow-lg group-hover:scale-105 transition-transform">
+          <i class="fa-solid fa-microchip text-sm"></i>
+        </div>
+        <div>
+          <span class="font-display font-bold text-lg tracking-tight text-white block group-hover:text-brand-400 transition-colors">Ayman Osama</span>
+          <span class="text-xs font-mono text-cyan-400 tracking-wider flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            IC VERIFICATION
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-1 lg:gap-2">
+        <a href="#about" class="px-3 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 rounded-lg transition-colors">About</a>
+        <a href="#education" class="px-3 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 rounded-lg transition-colors">Education</a>
+        <a href="#uvm-architecture" class="px-3 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 rounded-lg transition-colors flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+          UVM Flow
+        </a>
+        <a href="#skills" class="px-3 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 rounded-lg transition-colors">Skills</a>
+        <a href="#projects" class="px-3 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 rounded-lg transition-colors">Projects</a>
+        <a href="#experience" class="px-3 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 rounded-lg transition-colors">Experience</a>
+        <a href="#contact" class="px-3 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 rounded-lg transition-colors">Contact</a>
+      </nav>
+
+      <!-- Right Action CTA -->
+      <div class="flex items-center gap-3">
+        <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-xs font-mono uppercase tracking-wider font-semibold rounded-lg bg-gradient-to-r from-brand-600 to-cyan-600 text-white hover:from-brand-500 hover:to-cyan-500 shadow-md shadow-brand-900/30 transition-all hover:shadow-cyan-500/20 active:scale-95">
+          <span>Get in Touch</span>
+          <i class="fa-solid fa-arrow-right text-[10px]"></i>
+        </a>
+        <!-- Mobile menu toggle -->
+        <button id="mobileMenuBtn" aria-label="Toggle navigation menu" class="md:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800">
+          <i class="fa-solid fa-bars text-lg"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden md:hidden px-4 pt-2 pb-6 bg-silicon-950/95 border-b border-slate-800 transition-all">
+      <div class="flex flex-col space-y-2">
+        <a href="#about" class="mobile-link px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">About</a>
+        <a href="#education" class="mobile-link px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">Education</a>
+        <a href="#uvm-architecture" class="mobile-link px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">Interactive UVM Architecture</a>
+        <a href="#skills" class="mobile-link px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">Skills &amp; Competencies</a>
+        <a href="#projects" class="mobile-link px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">Featured Projects</a>
+        <a href="#experience" class="mobile-link px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">Experience &amp; Training</a>
+        <a href="#contact" class="mobile-link px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden">
+      <!-- Decorative background silicon light spots -->
+      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-600/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute top-20 right-10 w-72 h-72 bg-accent-cyan/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          <!-- Left Content -->
+          <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+            <!-- Role Status Badge -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-slate-700/80 shadow-inner">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+              </span>
+              <span class="text-xs font-mono uppercase tracking-widest text-cyan-300 font-semibold">Available for Internship &amp; Roles</span>
+            </div>
+
+            <!-- Main Heading -->
+            <div class="space-y-2">
+              <h1 class="text-4xl sm:text-6xl font-display font-extrabold text-white tracking-tight leading-tight">
+                Hi, I'm <span class="shimmer-text">Ayman Osama</span>
+              </h1>
+              <p class="text-xl sm:text-2xl font-mono text-cyan-400 font-medium">
+                Digital IC Verification Engineer
+              </p>
+            </div>
+
+            <!-- Headline Bio -->
+            <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              Transforming design intent into silicon reality through robust <strong class="text-white">SystemVerilog &amp; UVM testbenches</strong>, constrained-random stimulus generation, and rigorous <strong class="text-white">assertion-based verification (SVA)</strong>.
+            </p>
+
+            <!-- Quick Action Buttons -->
+            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+              <a href="#projects" class="px-6 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-medium text-sm transition-all shadow-lg shadow-brand-900/40 hover:-translate-y-0.5 flex items-center gap-2">
+                <i class="fa-solid fa-layer-group"></i>
+                <span>Explore Verification Projects</span>
+              </a>
+              <button onclick="copyToClipboard('ayman.osama181222@gmail.com', 'Email copied to clipboard!')" class="px-5 py-3.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-700 font-mono text-xs transition-all hover:-translate-y-0.5 flex items-center gap-2">
+                <i class="fa-solid fa-copy text-cyan-400"></i>
+                <span>Copy Email</span>
+              </button>
+              <a href="https://linkedin.com/in/ayman-osama-854aaa317" target="_blank" rel="noopener noreferrer" class="p-3.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-all hover:text-cyan-400" title="LinkedIn Profile">
+                <i class="fa-brands fa-linkedin-in text-base"></i>
+              </a>
+              <a href="https://github.com/Ayman246" target="_blank" rel="noopener noreferrer" class="p-3.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-all hover:text-cyan-400" title="GitHub Profile">
+                <i class="fa-brands fa-github text-base"></i>
+              </a>
+            </div>
+
+            <!-- Live Verification Metrics -->
+            <div class="grid grid-cols-3 gap-3 pt-6 max-w-lg mx-auto lg:mx-0 border-t border-slate-800/90">
+              <div class="p-3 rounded-lg bg-slate-900/60 border border-slate-800">
+                <div class="text-2xl font-bold font-mono text-white">95.46%</div>
+                <div class="text-xs text-slate-400">Last Year Grade</div>
+              </div>
+              <div class="p-3 rounded-lg bg-slate-900/60 border border-slate-800">
+                <div class="text-2xl font-bold font-mono text-cyan-400">UVM 1.2</div>
+                <div class="text-xs text-slate-400">Methodology</div>
+              </div>
+              <div class="p-3 rounded-lg bg-slate-900/60 border border-slate-800">
+                <div class="text-2xl font-bold font-mono text-emerald-400">100%</div>
+                <div class="text-xs text-slate-400">Target Coverage</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Content: Profile Card with Semiconductor Frame -->
+          <div class="lg:col-span-5 flex justify-center">
+            <div class="relative w-full max-w-sm">
+              <!-- Outer glowing ring -->
+              <div class="absolute -inset-1.5 rounded-3xl bg-gradient-to-b from-cyan-500 via-brand-600 to-slate-900 opacity-60 blur-lg"></div>
+              
+              <!-- Card container -->
+              <div class="relative rounded-2xl bg-silicon-900 border border-slate-700/80 p-6 sm:p-8 shadow-2xl flex flex-col items-center text-center">
+                
+                <!-- Circuit board badge decoration -->
+                <div class="w-full flex justify-between items-center text-xs font-mono text-slate-400 border-b border-slate-800 pb-3 mb-6">
+                  <span class="flex items-center gap-1">
+                    <i class="fa-solid fa-circle text-[8px] text-cyan-400"></i> ASIC_DUT
+                  </span>
+                  <span class="text-slate-400">Mansoura, Egypt</span>
+                </div>
+
+                <!-- Circular Avatar Ring matching your CV portfolio portrait -->
+                <div id="avatarDropZone" class="relative w-44 h-44 sm:w-48 sm:h-48 rounded-full p-2 bg-gradient-to-tr from-brand-900 via-brand-600 to-cyan-400 shadow-xl mb-3 flex items-center justify-center group transition-transform duration-200">
+                  <div class="w-full h-full rounded-full overflow-hidden border-4 border-slate-950 bg-slate-800 relative flex items-center justify-center">
+                    <img 
+                      id="profileAvatar"
+                      src="studioshot_square_plain.jpg" 
+                      alt="Ayman Osama - Digital IC Verification Engineer" 
+                      class="w-full h-full object-cover object-[center_15%] scale-105 transition-all duration-300"
+                      onerror="handleAvatarError(this)"
+                    />
+                    <!-- Quick photo picker overlay for local preview testing -->
+                    <label for="avatarUpload" class="absolute inset-0 bg-slate-950/75 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center cursor-pointer text-white text-[11px] font-mono p-2 text-center" title="Click to test or switch photo directly in preview">
+                      <i class="fa-solid fa-camera text-base mb-1 text-cyan-400"></i>
+                      <span>Select Photo</span>
+                    </label>
+                    <input type="file" id="avatarUpload" accept="image/*" class="hidden" onchange="previewAvatar(event)">
+                  </div>
+                  <!-- Mini floating IC pin badge -->
+                  <div class="absolute -bottom-2 -right-1 bg-brand-600 text-white w-10 h-10 rounded-full border-2 border-silicon-900 flex items-center justify-center shadow-lg pointer-events-none">
+                    <i class="fa-solid fa-microchip text-sm"></i>
+                  </div>
+                </div>
+
+                <!-- One-click preview helper button -->
+                <div id="previewHelperBox" class="mb-4">
+                  <label for="avatarUpload" class="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-950/90 border border-cyan-500/50 hover:border-cyan-400 text-[11px] font-mono text-cyan-300 hover:text-white transition-all shadow-md active:scale-95">
+                    <i class="fa-solid fa-cloud-arrow-up text-xs"></i>
+                    <span>Click or Drag 'studioshot_square_plain.jpg'</span>
+                  </label>
+                </div>
+
+                <h3 class="text-xl font-display font-bold text-white">Ayman Osama</h3>
+                <p class="text-sm font-mono text-cyan-400 mt-1">Verification Track Specialist</p>
+
+                <div class="mt-5 w-full bg-slate-950/70 rounded-xl p-3.5 border border-slate-800/80 text-left font-mono text-xs space-y-2">
+                  <div class="flex justify-between text-slate-400">
+                    <span>Language:</span>
+                    <span class="text-white font-semibold">SystemVerilog</span>
+                  </div>
+                  <div class="flex justify-between text-slate-400">
+                    <span>Framework:</span>
+                    <span class="text-cyan-300 font-semibold">UVM 1.2 / SVA</span>
+                  </div>
+                  <div class="flex justify-between text-slate-400">
+                    <span>Protocols:</span>
+                    <span class="text-brand-300 font-semibold">AXI4, UART, APB</span>
+                  </div>
+                  <div class="flex justify-between text-slate-400">
+                    <span>Expected Grad:</span>
+                    <span class="text-emerald-400 font-semibold">2028</span>
+                  </div>
+                </div>
+
+                <!-- View Quick Spec Button -->
+                <a href="#uvm-architecture" class="mt-5 w-full py-2.5 px-4 rounded-lg bg-slate-800 hover:bg-slate-700/80 text-slate-200 text-xs font-mono font-medium transition-colors flex items-center justify-center gap-2">
+                  <i class="fa-solid fa-diagram-project text-cyan-400"></i>
+                  <span>Inspect Verification Architecture</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-16 md:py-24 border-t border-slate-800/80 bg-silicon-950/40 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-slate-900 border border-slate-800 text-xs font-mono text-cyan-400 uppercase tracking-widest">
+            <span>Core Profile</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight">
+            About Me &amp; Verification Philosophy
+          </h2>
+          <p class="text-slate-400 text-base">
+            Why digital verification matters: uncovering bugs in RTL before tapeout saves millions in fabrication resubmissions.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          
+          <!-- Left Column: Story & Methodology -->
+          <div class="lg:col-span-7 bg-silicon-900/90 rounded-2xl p-6 sm:p-8 border border-slate-800 flex flex-col justify-between">
+            <div class="space-y-4">
+              <h3 class="text-xl font-display font-bold text-white flex items-center gap-2.5">
+                <i class="fa-solid fa-code-branch text-brand-400"></i>
+                <span>Transforming Specifications into Silicon Success</span>
+              </h3>
+              <p class="text-slate-300 leading-relaxed text-sm sm:text-base">
+                I am an Electronics and Communication Engineering student at <strong class="text-white">Mansoura University</strong> with a rigorous focus on ASIC and SoC digital verification. I specialize in architecting modular SystemVerilog and Universal Verification Methodology (UVM) environments from the ground up.
+              </p>
+              <p class="text-slate-300 leading-relaxed text-sm sm:text-base">
+                My verification methodology emphasizes <strong class="text-cyan-300">constrained-random stimulus generation</strong>, complete functional coverage closure using covergroups, and deterministic <strong class="text-cyan-300">SystemVerilog Assertions (SVA)</strong> to pinpoint corner-case protocol violations long before physical tapeout.
+              </p>
+              
+              <!-- Core Competencies Badges -->
+              <div class="pt-2">
+                <span class="text-xs font-mono uppercase tracking-wider text-slate-400 block mb-2.5">Key Verification Directives:</span>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 border border-slate-700 text-xs font-mono text-cyan-300 flex items-center gap-1.5">
+                    <i class="fa-solid fa-check text-emerald-400 text-[10px]"></i> Constrained-Random (CRV)
+                  </span>
+                  <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 border border-slate-700 text-xs font-mono text-cyan-300 flex items-center gap-1.5">
+                    <i class="fa-solid fa-check text-emerald-400 text-[10px]"></i> SystemVerilog Assertions (SVA)
+                  </span>
+                  <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 border border-slate-700 text-xs font-mono text-cyan-300 flex items-center gap-1.5">
+                    <i class="fa-solid fa-check text-emerald-400 text-[10px]"></i> UVM Testbench Hierarchy
+                  </span>
+                  <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 border border-slate-700 text-xs font-mono text-cyan-300 flex items-center gap-1.5">
+                    <i class="fa-solid fa-check text-emerald-400 text-[10px]"></i> Functional Coverage Closure
+                  </span>
+                  <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 border border-slate-700 text-xs font-mono text-cyan-300 flex items-center gap-1.5">
+                    <i class="fa-solid fa-check text-emerald-400 text-[10px]"></i> UVM RAL (Register Layer)
+                  </span>
+                  <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 border border-slate-700 text-xs font-mono text-cyan-300 flex items-center gap-1.5">
+                    <i class="fa-solid fa-check text-emerald-400 text-[10px]"></i> RTL Timing &amp; STA Basics
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quote Block -->
+            <div class="mt-6 pt-5 border-t border-slate-800/90 flex items-start gap-3">
+              <i class="fa-solid fa-quote-left text-cyan-400 text-xl mt-1"></i>
+              <p class="text-sm italic text-slate-300">
+                "Finding bugs in RTL early is orders of magnitude cheaper than catching them in silicon. Exhaustive verification is the foundation of high-yield hardware."
+              </p>
+            </div>
+          </div>
+
+          <!-- Right Column: Verification Pillars -->
+          <div class="lg:col-span-5 grid grid-cols-1 gap-4">
+            
+            <div class="p-5 rounded-2xl bg-silicon-900/90 border border-slate-800 hover:border-brand-500/50 transition-colors">
+              <div class="w-10 h-10 rounded-xl bg-brand-950 border border-brand-800/80 text-brand-400 flex items-center justify-center text-lg mb-3">
+                <i class="fa-solid fa-vial-virus"></i>
+              </div>
+              <h4 class="font-display font-semibold text-white text-base mb-1">Corner-Case Discovery</h4>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                Applying weighted constraints and automated randomization to stimulate edge cases that directed test vectors inherently overlook.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-silicon-900/90 border border-slate-800 hover:border-cyan-500/50 transition-colors">
+              <div class="w-10 h-10 rounded-xl bg-cyan-950 border border-cyan-800/80 text-cyan-400 flex items-center justify-center text-lg mb-3">
+                <i class="fa-solid fa-chart-pie"></i>
+              </div>
+              <h4 class="font-display font-semibold text-white text-base mb-1">Coverage-Driven Verification (CDV)</h4>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                Formulating explicit cross-covergroups and transition bins to mathematically track verification progress toward 100% sign-off coverage.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-silicon-900/90 border border-slate-800 hover:border-emerald-500/50 transition-colors">
+              <div class="w-10 h-10 rounded-xl bg-emerald-950 border border-emerald-800/80 text-emerald-400 flex items-center justify-center text-lg mb-3">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <h4 class="font-display font-semibold text-white text-base mb-1">Assertion-Based Protocol Checking</h4>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                Validating complex handshakes (valid/ready, burst boundaries) cycle-by-cycle using concurrent SVA for rapid failure localization.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section id="education" class="py-16 md:py-24 border-t border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+          <div>
+            <span class="text-xs font-mono text-cyan-400 tracking-wider uppercase">Academic Foundation</span>
+            <h2 class="text-3xl font-display font-bold text-white tracking-tight mt-1">Education &amp; Qualifications</h2>
+          </div>
+          <div class="text-sm font-mono text-slate-400">
+            Faculty of Engineering · Mansoura University
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          
+          <!-- Main Degree Card -->
+          <div class="lg:col-span-8 bg-silicon-900/80 border border-slate-800 rounded-2xl p-6 sm:p-8 relative overflow-hidden">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-6 mb-6">
+              <div class="flex items-center gap-4">
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-700 to-cyan-500 text-white flex items-center justify-center text-2xl shadow-lg">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div>
+                  <h3 class="text-xl sm:text-2xl font-display font-bold text-white">B.Sc. in Electronics &amp; Communication Engineering</h3>
+                  <p class="text-sm font-medium text-slate-400">Mansoura University, Egypt</p>
+                </div>
+              </div>
+              <span class="px-3.5 py-1.5 rounded-full bg-slate-800 border border-slate-700 font-mono text-xs text-cyan-400 self-start sm:self-auto">
+                2023 – Expected 2028
+              </span>
+            </div>
+
+            <!-- Grades Matrix -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+              <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800 flex items-center justify-between">
+                <div>
+                  <span class="text-xs font-mono uppercase tracking-wider text-slate-400 block">Academic Standing</span>
+                  <span class="text-lg font-bold text-emerald-400">Excellent</span>
+                </div>
+                <i class="fa-solid fa-award text-emerald-400 text-2xl"></i>
+              </div>
+              <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800 flex items-center justify-between">
+                <div>
+                  <span class="text-xs font-mono uppercase tracking-wider text-slate-400 block">Last Academic Year Grade</span>
+                  <span class="text-2xl font-bold font-mono text-cyan-400">95.46%</span>
+                </div>
+                <i class="fa-solid fa-chart-line text-cyan-400 text-2xl"></i>
+              </div>
+            </div>
+
+            <!-- Coursework Badges -->
+            <div>
+              <h4 class="text-xs font-mono uppercase tracking-wider text-slate-400 mb-3">Key Technical Coursework</h4>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/80 text-xs text-slate-300">Digital Integrated Circuits</span>
+                <span class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/80 text-xs text-slate-300">Static Timing Analysis (STA)</span>
+                <span class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/80 text-xs text-slate-300">RTL Design with Verilog</span>
+                <span class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/80 text-xs text-slate-300">Computer Architecture</span>
+                <span class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/80 text-xs text-slate-300">Object-Oriented Programming</span>
+                <span class="px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/80 text-xs text-slate-300">Probability &amp; Discrete Math</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Academic Focus Sidebar -->
+          <div class="lg:col-span-4 bg-gradient-to-br from-brand-950/70 to-silicon-900 border border-brand-800/40 rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="w-12 h-12 rounded-xl bg-brand-600/20 border border-brand-500/30 flex items-center justify-center text-cyan-400 text-xl">
+                <i class="fa-solid fa-microchip"></i>
+              </div>
+              <h3 class="text-xl font-display font-bold text-white">Hardware Verification Focus</h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Combining rigorous electrical fundamentals with modern simulation methodologies. Committed to delivering reusable verification collateral for advanced digital ASICs and SoCs.
+              </p>
+            </div>
+
+            <div class="pt-6 border-t border-slate-800/80 mt-6">
+              <span class="text-xs font-mono uppercase tracking-wider text-slate-400 block mb-1">Target Placement:</span>
+              <div class="text-base font-semibold text-white flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                Digital IC Verification Intern
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE UVM ARCHITECTURE VISUALIZER -->
+    <section id="uvm-architecture" class="py-16 md:py-24 border-t border-slate-800/80 bg-silicon-950/60 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-slate-900 border border-slate-800 text-xs font-mono text-cyan-400 uppercase tracking-widest">
+            <span>Methodology In Action</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight">
+            Universal Verification Methodology (UVM) Flow
+          </h2>
+          <p class="text-slate-400 text-sm sm:text-base">
+            Click on any UVM component below to inspect its operational role, communication TLM ports, and verification responsibilities.
+          </p>
+        </div>
+
+        <!-- Visual Architecture Canvas -->
+        <div class="bg-silicon-900 rounded-2xl border border-slate-800 p-6 sm:p-8 shadow-2xl">
+          
+          <div class="text-xs font-mono text-cyan-400 flex items-center justify-between pb-4 border-b border-slate-800 mb-6">
+            <span>UVM_ENV :: top_level_env</span>
+            <span class="text-slate-400">SystemVerilog / IEEE 1800.2</span>
+          </div>
+
+          <!-- Component Grid representing Testbench Hierarchy -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            
+            <!-- UVM Component Card 1: Sequencer & Sequences -->
+            <div onclick="selectUvmComponent('sequencer')" id="card-sequencer" class="uvm-card cursor-pointer p-4 rounded-xl bg-slate-950/70 border-2 border-slate-800 hover:border-brand-500 transition-all hover:-translate-y-1">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-mono text-brand-400 font-bold">uvm_sequencer</span>
+                <i class="fa-solid fa-shuffle text-brand-400 text-sm"></i>
+              </div>
+              <h4 class="font-display font-semibold text-white text-base">Sequencer &amp; Sequences</h4>
+              <p class="text-xs text-slate-400 mt-1">Generates constrained-random transaction items.</p>
+            </div>
+
+            <!-- UVM Component Card 2: Driver -->
+            <div onclick="selectUvmComponent('driver')" id="card-driver" class="uvm-card cursor-pointer p-4 rounded-xl bg-slate-950/70 border-2 border-slate-800 hover:border-cyan-500 transition-all hover:-translate-y-1">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-mono text-cyan-400 font-bold">uvm_driver</span>
+                <i class="fa-solid fa-bolt text-cyan-400 text-sm"></i>
+              </div>
+              <h4 class="font-display font-semibold text-white text-base">Bus Driver</h4>
+              <p class="text-xs text-slate-400 mt-1">Converts TLM transaction objects into pin-level signal toggles.</p>
+            </div>
+
+            <!-- UVM Component Card 3: Monitor & SVA -->
+            <div onclick="selectUvmComponent('monitor')" id="card-monitor" class="uvm-card cursor-pointer p-4 rounded-xl bg-slate-950/70 border-2 border-slate-800 hover:border-emerald-500 transition-all hover:-translate-y-1">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-mono text-emerald-400 font-bold">uvm_monitor + SVA</span>
+                <i class="fa-solid fa-eye text-emerald-400 text-sm"></i>
+              </div>
+              <h4 class="font-display font-semibold text-white text-base">Passive Monitor &amp; Checks</h4>
+              <p class="text-xs text-slate-400 mt-1">Samples pin interface and fires temporal assertions.</p>
+            </div>
+
+            <!-- UVM Component Card 4: Scoreboard & RAL -->
+            <div onclick="selectUvmComponent('scoreboard')" id="card-scoreboard" class="uvm-card cursor-pointer p-4 rounded-xl bg-slate-950/70 border-2 border-slate-800 hover:border-violet-500 transition-all hover:-translate-y-1">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-mono text-violet-400 font-bold">uvm_scoreboard + RAL</span>
+                <i class="fa-solid fa-scale-balanced text-violet-400 text-sm"></i>
+              </div>
+              <h4 class="font-display font-semibold text-white text-base">Scoreboard &amp; Coverage</h4>
+              <p class="text-xs text-slate-400 mt-1">Compares golden reference model output &amp; bins coverage.</p>
+            </div>
+
+          </div>
+
+          <!-- Dynamic Component Inspector Display -->
+          <div id="uvmDetailBox" class="p-6 rounded-xl bg-slate-950 border border-slate-800 transition-all">
+            <!-- Populated via JS -->
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SKILLS & VERIFICATION COMPETENCIES -->
+    <section id="skills" class="py-16 md:py-24 border-t border-slate-800/80 bg-silicon-950/40 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-slate-900 border border-slate-800 text-xs font-mono text-cyan-400 uppercase tracking-widest">
+            <span>Competency Stack</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight">
+            Technical Skills &amp; Verification Competencies
+          </h2>
+          <p class="text-slate-400 text-base">
+            Structured skill sets across verification methodologies, RTL design fundamentals, automation scripting, and EDA simulators.
+          </p>
+        </div>
+
+        <!-- Categorized Competency Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- Category 1: HDL & Verification Languages -->
+          <div class="p-6 rounded-2xl bg-silicon-900 border border-slate-800 hover:border-brand-500/50 transition-all flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-brand-950 border border-brand-800 text-brand-400 flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <h3 class="font-display font-bold text-white text-lg mb-1">HDL &amp; Languages</h3>
+              <p class="text-xs text-slate-400 mb-4">Core languages for verification &amp; RTL.</p>
+              
+              <div class="space-y-2.5">
+                <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-950/70 border border-slate-800">
+                  <span class="text-xs font-mono text-cyan-300 font-semibold">SystemVerilog</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-brand-900/60 text-brand-300">Core</span>
+                </div>
+                <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-950/70 border border-slate-800">
+                  <span class="text-xs font-mono text-slate-200">Verilog HDL</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400">RTL</span>
+                </div>
+                <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-950/70 border border-slate-800">
+                  <span class="text-xs font-mono text-slate-200">RTL Fundamentals</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400">Design</span>
+                </div>
+                <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-950/70 border border-slate-800">
+                  <span class="text-xs font-mono text-slate-200">STA Principles</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400">Timing</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 2: Methodologies & Frameworks -->
+          <div class="p-6 rounded-2xl bg-silicon-900 border border-slate-800 hover:border-cyan-500/50 transition-all flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-cyan-950 border border-cyan-800 text-cyan-400 flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-bullseye"></i>
+              </div>
+              <h3 class="font-display font-bold text-white text-lg mb-1">Verification Flow</h3>
+              <p class="text-xs text-slate-400 mb-4">Industry frameworks for automated closure.</p>
+              
+              <div class="space-y-2.5">
+                <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-950/70 border border-slate-800">
+                  <span class="text-xs font-mono text-cyan-300 font-semibold">UVM 1.2 Architecture</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-cyan-900/60 text-cyan-300">Methodology</span>
+                </div>
+                <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-950/70 border border-slate-800">
+                  <span class="text-xs font-mono text-slate-200">SVA Assertions</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400">Concurrent</span>
+                </div>
+                <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-950/70 border border-slate-800">
+                  <span class="text-xs font-mono text-slate-200">Constrained-Random</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400">CRV</span>
+                </div>
+                <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-950/70 border border-slate-800">
+                  <span class="text-xs font-mono text-slate-200">UVM RAL Registers</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400">CSR</span>
+                </div>
+                <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-950/70 border border-slate-800">
+                  <span class="text-xs font-mono text-slate-200">Functional Covergroups</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400">Coverage</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 3: Programming & Scripting -->
+          <div class="p-6 rounded-2xl bg-silicon-900 border border-slate-800 hover:border-emerald-500/50 transition-all flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-emerald-950 border border-emerald-800 text-emerald-400 flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-terminal"></i>
+              </div>
+              <h3 class="font-display font-bold text-white text-lg mb-1">Software &amp; Scripting</h3>
+              <p class="text-xs text-slate-400 mb-4">Automation, regression control &amp; OOP.</p>
+              
+              <div class="space-y-2.5">
+                <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-950/70 border border-slate-800">
+                  <span class="text-xs font-mono text-emerald-300 font-semibold">Python</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-900/60 text-emerald-300">Scripts</span>
+                </div>
+                <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-950/70 border border-slate-800">
+                  <span class="text-xs font-mono text-slate-200">Shell / Bash Scripting</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400">CLI</span>
+                </div>
+                <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-950/70 border border-slate-800">
+                  <span class="text-xs font-mono text-slate-200">OOP Paradigms</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400">C++ / SV</span>
+                </div>
+                <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-950/70 border border-slate-800">
+                  <span class="text-xs font-mono text-slate-200">Git / GitHub Flow</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400">VCS</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 4: EDA & Protocols -->
+          <div class="p-6 rounded-2xl bg-silicon-900 border border-slate-800 hover:border-violet-500/50 transition-all flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-violet-950 border border-violet-800 text-violet-400 flex items-center justify-center text-xl mb-4">
+                <i class="fa-solid fa-sliders"></i>
+              </div>
+              <h3 class="font-display font-bold text-white text-lg mb-1">EDA &amp; Protocols</h3>
+              <p class="text-xs text-slate-400 mb-4">Simulators and bus standards.</p>
+              
+              <div class="space-y-2.5">
+                <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-950/70 border border-slate-800">
+                  <span class="text-xs font-mono text-violet-300 font-semibold">QuestaSim / ModelSim</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-violet-900/60 text-violet-300">EDA</span>
+                </div>
+                <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-950/70 border border-slate-800">
+                  <span class="text-xs font-mono text-slate-200">AXI4 / AXI-Lite Protocol</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400">AMBA</span>
+                </div>
+                <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-950/70 border border-slate-800">
+                  <span class="text-xs font-mono text-slate-200">UART Protocol</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400">Serial</span>
+                </div>
+                <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-950/70 border border-slate-800">
+                  <span class="text-xs font-mono text-slate-200">APB Bus Verification</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400">Peripheral</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="py-16 md:py-24 border-t border-slate-800/80 bg-silicon-950/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4">
+          <div>
+            <span class="text-xs font-mono text-cyan-400 tracking-wider uppercase">Verification Implementations</span>
+            <h2 class="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight mt-1">
+              Featured ASIC Verification Projects
+            </h2>
+          </div>
+          <p class="text-sm font-mono text-slate-400 max-w-md">
+            Engineered with SystemVerilog, UVM 1.2, assertions, and constrained-random sequences.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          
+          <!-- PROJECT 1: AXI4 Slave Verification -->
+          <div class="rounded-2xl bg-silicon-900 border border-slate-800 hover:border-brand-500/60 transition-all p-6 flex flex-col justify-between shadow-xl relative group">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono text-cyan-400 font-semibold px-2.5 py-1 rounded bg-slate-950 border border-slate-800">
+                  UVM 1.2 · SVA · CRV
+                </span>
+                <span class="text-xs font-mono text-slate-400">2026</span>
+              </div>
+
+              <h3 class="text-xl font-display font-bold text-white group-hover:text-cyan-300 transition-colors">
+                AXI4-Compliant Memory-Mapped Slave Verification
+              </h3>
+
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Architected a full-featured modular UVM testbench (agents, drivers, monitors, sequences, scoreboard) to verify an AXI4 slave interface under multi-burst, random-stall, and out-of-order response conditions.
+              </p>
+
+              <!-- Technical Accomplishments -->
+              <div class="space-y-2 pt-2 border-t border-slate-800">
+                <div class="flex items-start gap-2 text-xs text-slate-300">
+                  <i class="fa-solid fa-angle-right text-cyan-400 mt-0.5"></i>
+                  <span>Defined functional covergroups across burst sizes (INCR, WRAP, FIXED), addresses, and lengths.</span>
+                </div>
+                <div class="flex items-start gap-2 text-xs text-slate-300">
+                  <i class="fa-solid fa-angle-right text-cyan-400 mt-0.5"></i>
+                  <span>Authored concurrent SVA to enforce valid/ready handshake stability and burst boundary rules.</span>
+                </div>
+                <div class="flex items-start gap-2 text-xs text-slate-300">
+                  <i class="fa-solid fa-angle-right text-cyan-400 mt-0.5"></i>
+                  <span>Implemented constrained-random sequences targeting back-to-back reads/writes and corner addresses.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-slate-800/80 flex items-center justify-between">
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2 py-0.5 rounded bg-slate-950 text-[11px] font-mono text-slate-400">AMBA AXI4</span>
+                <span class="px-2 py-0.5 rounded bg-slate-950 text-[11px] font-mono text-slate-400">Covergroups</span>
+              </div>
+              <button onclick="openProjectModal('axi4')" class="text-xs font-mono text-cyan-400 hover:text-cyan-300 font-semibold flex items-center gap-1">
+                <span>Inspect Architecture</span>
+                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- PROJECT 2: UART Transmitter Verification -->
+          <div class="rounded-2xl bg-silicon-900 border border-slate-800 hover:border-cyan-500/60 transition-all p-6 flex flex-col justify-between shadow-xl relative group">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono text-emerald-400 font-semibold px-2.5 py-1 rounded bg-slate-950 border border-slate-800">
+                  SystemVerilog · OOP · SVA
+                </span>
+                <span class="text-xs font-mono text-slate-400">2026</span>
+              </div>
+
+              <h3 class="text-xl font-display font-bold text-white group-hover:text-emerald-300 transition-colors">
+                UART Transmitter Protocol Verification Environment
+              </h3>
+
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Constructed an OOP-based SystemVerilog testbench containing transaction generators, mailbox drivers, monitors, and an automated self-checking scoreboard to validate UART TX RTL modules.
+              </p>
+
+              <div class="space-y-2 pt-2 border-t border-slate-800">
+                <div class="flex items-start gap-2 text-xs text-slate-300">
+                  <i class="fa-solid fa-angle-right text-emerald-400 mt-0.5"></i>
+                  <span>Synthesized assertions checking start bit detection, stop bit duration, and parity generation.</span>
+                </div>
+                <div class="flex items-start gap-2 text-xs text-slate-300">
+                  <i class="fa-solid fa-angle-right text-emerald-400 mt-0.5"></i>
+                  <span>Randomized baud-rate divisors, data payload widths (5-8 bits), and parity configurations.</span>
+                </div>
+                <div class="flex items-start gap-2 text-xs text-slate-300">
+                  <i class="fa-solid fa-angle-right text-emerald-400 mt-0.5"></i>
+                  <span>Designed scoreboard comparison capturing transmitter buffer underflow/overflow scenarios.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-slate-800/80 flex items-center justify-between">
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2 py-0.5 rounded bg-slate-950 text-[11px] font-mono text-slate-400">UART Spec</span>
+                <span class="px-2 py-0.5 rounded bg-slate-950 text-[11px] font-mono text-slate-400">Timing Checks</span>
+              </div>
+              <button onclick="openProjectModal('uart')" class="text-xs font-mono text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+                <span>Inspect Architecture</span>
+                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- PROJECT 3: UVM RAL Testbench -->
+          <div class="rounded-2xl bg-silicon-900 border border-slate-800 hover:border-violet-500/60 transition-all p-6 flex flex-col justify-between shadow-xl relative group">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono text-violet-400 font-semibold px-2.5 py-1 rounded bg-slate-950 border border-slate-800">
+                  UVM RAL · CSR Modeling
+                </span>
+                <span class="text-xs font-mono text-slate-400">2026</span>
+              </div>
+
+              <h3 class="text-xl font-display font-bold text-white group-hover:text-violet-300 transition-colors">
+                Register Abstraction Layer (RAL) Testbench
+              </h3>
+
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Implemented a complete UVM Register Abstraction Layer model to automate register map verification, access permission verification, and configuration status register (CSR) integrity.
+              </p>
+
+              <div class="space-y-2 pt-2 border-t border-slate-800">
+                <div class="flex items-start gap-2 text-xs text-slate-300">
+                  <i class="fa-solid fa-angle-right text-violet-400 mt-0.5"></i>
+                  <span>Executed built-in UVM sequences (uvm_reg_hw_reset_seq, uvm_reg_bit_bash_seq).</span>
+                </div>
+                <div class="flex items-start gap-2 text-xs text-slate-300">
+                  <i class="fa-solid fa-angle-right text-violet-400 mt-0.5"></i>
+                  <span>Developed custom adapter classes converting generic reg_item to bus-specific transactions.</span>
+                </div>
+                <div class="flex items-start gap-2 text-xs text-slate-300">
+                  <i class="fa-solid fa-angle-right text-violet-400 mt-0.5"></i>
+                  <span>Integrated front-door and back-door backdoor access paths to verify mirrored memory fidelity.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-slate-800/80 flex items-center justify-between">
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2 py-0.5 rounded bg-slate-950 text-[11px] font-mono text-slate-400">CSR Mapping</span>
+                <span class="px-2 py-0.5 rounded bg-slate-950 text-[11px] font-mono text-slate-400">Backdoor DPI</span>
+              </div>
+              <button onclick="openProjectModal('ral')" class="text-xs font-mono text-violet-400 hover:text-violet-300 font-semibold flex items-center gap-1">
+                <span>Inspect Architecture</span>
+                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EXPERIENCE & TRAINING SECTION -->
+    <section id="experience" class="py-16 md:py-24 border-t border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-slate-900 border border-slate-800 text-xs font-mono text-cyan-400 uppercase tracking-widest">
+            <span>Career Journey</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight">
+            Specialized Training &amp; Experience
+          </h2>
+          <p class="text-slate-400 text-base">
+            Structured industrial training in verification methodologies and volunteer technical instruction.
+          </p>
+        </div>
+
+        <div class="max-w-4xl mx-auto space-y-6">
+          
+          <!-- Experience Item 1: Advanced UVM Course -->
+          <div class="p-6 sm:p-8 rounded-2xl bg-silicon-900 border-2 border-brand-600/50 shadow-xl relative overflow-hidden">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+              <div>
+                <span class="text-xs font-mono text-cyan-400 uppercase tracking-wider font-semibold">Specialized Industry Training</span>
+                <h3 class="text-xl sm:text-2xl font-display font-bold text-white mt-0.5">
+                  Advanced SystemVerilog, UVM, SVA, and RAL Verification Course
+                </h3>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-slate-950 border border-slate-800 font-mono text-xs text-brand-300 self-start sm:self-auto">
+                2026
+              </span>
+            </div>
+
+            <p class="text-xs font-mono text-slate-400 mb-4 flex items-center gap-2">
+              <i class="fa-solid fa-chalkboard-user text-cyan-400"></i>
+              <span>Instructor: <strong>Eng. Hassan Khaled</strong> (Digital IC Verification Engineer at Si-Vision)</span>
+            </p>
+
+            <ul class="space-y-2.5 text-xs sm:text-sm text-slate-300">
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-cyan-400 mt-1 text-xs"></i>
+                <span>Deep dive into SystemVerilog OOP, virtual interfaces, mailboxes, semaphores, and parameterized testbenches.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-cyan-400 mt-1 text-xs"></i>
+                <span>Architected end-to-end UVM verification environments: components, phases, factory overrides, sequences, and scoreboards.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-cyan-400 mt-1 text-xs"></i>
+                <span>Implemented functional coverage models and authored concurrent SystemVerilog Assertions (SVA) for temporal protocol checking.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-cyan-400 mt-1 text-xs"></i>
+                <span>Built UVM Register Abstraction Layer (RAL) models for register mapping and front-door/back-door verification.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Experience Item 2: Digital Design Verilog -->
+          <div class="p-6 sm:p-8 rounded-2xl bg-silicon-900 border border-slate-800 shadow-lg relative">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+              <div>
+                <span class="text-xs font-mono text-emerald-400 uppercase tracking-wider font-semibold">Course &amp; Certification</span>
+                <h3 class="text-lg sm:text-xl font-display font-bold text-white mt-0.5">
+                  Digital System Design using Verilog HDL
+                </h3>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-slate-950 border border-slate-800 font-mono text-xs text-slate-400 self-start sm:self-auto">
+                2026
+              </span>
+            </div>
+
+            <p class="text-xs font-mono text-slate-400 mb-4 flex items-center gap-2">
+              <i class="fa-solid fa-certificate text-emerald-400"></i>
+              <span>Platform: <strong>MaharaTech – ITIMooca</strong></span>
+            </p>
+
+            <ul class="space-y-2 text-xs sm:text-sm text-slate-300">
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-emerald-400 mt-1 text-xs"></i>
+                <span>Formulated synthesizable RTL designs complying with strict timing, clocking, and reset constraints.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-emerald-400 mt-1 text-xs"></i>
+                <span>Implemented Finite State Machines (FSM - Mealy &amp; Moore) and behavioral digital building blocks.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-emerald-400 mt-1 text-xs"></i>
+                <span>Simulated and validated logic against corner-case timing scenarios in RTL testbenches.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Experience Item 3: Volunteering & Instruction -->
+          <div class="p-6 sm:p-8 rounded-2xl bg-silicon-900 border border-slate-800 shadow-lg relative">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+              <div>
+                <span class="text-xs font-mono text-amber-400 uppercase tracking-wider font-semibold">Leadership &amp; Teaching</span>
+                <h3 class="text-lg sm:text-xl font-display font-bold text-white mt-0.5">
+                  Instructor – Digital Design Track
+                </h3>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-slate-950 border border-slate-800 font-mono text-xs text-slate-400 self-start sm:self-auto">
+                2025 – 2026
+              </span>
+            </div>
+
+            <p class="text-xs font-mono text-slate-400 mb-4 flex items-center gap-2">
+              <i class="fa-solid fa-users text-amber-400"></i>
+              <span>Organizations: <strong>Break IN Camp (2026) | STARKS Camp (2025)</strong></span>
+            </p>
+
+            <ul class="space-y-2 text-xs sm:text-sm text-slate-300">
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-amber-400 mt-1 text-xs"></i>
+                <span>Delivered lectures to junior engineering trainees on fundamental combinational/sequential logic and HDL flows.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-amber-400 mt-1 text-xs"></i>
+                <span>Mentored student project groups through debugging Verilog testbenches and simulation waveforms.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-circle-check text-amber-400 mt-1 text-xs"></i>
+                <span>Completed intensive training in the Digital Design Track during STARKS Camp 2025.</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-16 md:py-24 border-t border-slate-800/80 bg-silicon-950/70 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Contact Left: Information & Channels -->
+          <div class="lg:col-span-6 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-slate-900 border border-slate-800 text-xs font-mono text-cyan-400 uppercase tracking-widest">
+              <span>Let's Connect</span>
+            </div>
+            
+            <h2 class="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight">
+              Ready for Verification Challenges
+            </h2>
+            
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+              I am actively seeking <strong class="text-white">Digital IC Verification Internship</strong> and junior engineering opportunities. If you have an opening or would like to discuss my SystemVerilog &amp; UVM projects, please feel free to reach out.
+            </p>
+
+            <!-- Interactive Contact Info List -->
+            <div class="space-y-3 pt-2">
+              
+              <!-- Email Card -->
+              <div class="p-4 rounded-xl bg-silicon-900 border border-slate-800 flex items-center justify-between hover:border-slate-700 transition-colors">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-brand-950 border border-brand-800 text-brand-400 flex items-center justify-center">
+                    <i class="fa-solid fa-envelope"></i>
+                  </div>
+                  <div>
+                    <span class="text-xs text-slate-400 font-mono block">Email Address</span>
+                    <a href="mailto:ayman.osama181222@gmail.com" class="text-sm sm:text-base font-mono font-medium text-white hover:text-cyan-400 transition-colors">
+                      ayman.osama181222@gmail.com
+                    </a>
+                  </div>
+                </div>
+                <button onclick="copyToClipboard('ayman.osama181222@gmail.com', 'Email copied!')" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors" title="Copy Email">
+                  <i class="fa-solid fa-copy text-xs"></i>
+                </button>
+              </div>
+
+              <!-- Phone Card -->
+              <div class="p-4 rounded-xl bg-silicon-900 border border-slate-800 flex items-center justify-between hover:border-slate-700 transition-colors">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-emerald-950 border border-emerald-800 text-emerald-400 flex items-center justify-center">
+                    <i class="fa-solid fa-phone"></i>
+                  </div>
+                  <div>
+                    <span class="text-xs text-slate-400 font-mono block">Phone / WhatsApp</span>
+                    <a href="tel:+201017944835" class="text-sm sm:text-base font-mono font-medium text-white hover:text-emerald-400 transition-colors">
+                      +20 101 794 4835
+                    </a>
+                  </div>
+                </div>
+                <button onclick="copyToClipboard('+201017944835', 'Phone number copied!')" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors" title="Copy Phone">
+                  <i class="fa-solid fa-copy text-xs"></i>
+                </button>
+              </div>
+
+              <!-- Location & Socials -->
+              <div class="p-4 rounded-xl bg-silicon-900 border border-slate-800 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-cyan-950 border border-cyan-800 text-cyan-400 flex items-center justify-center">
+                    <i class="fa-solid fa-location-dot"></i>
+                  </div>
+                  <div>
+                    <span class="text-xs text-slate-400 font-mono block">Location</span>
+                    <span class="text-sm font-medium text-white">Mansoura, Egypt</span>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2">
+                  <a href="https://linkedin.com/in/ayman-osama-854aaa317" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-slate-800 hover:bg-brand-600 text-white transition-colors" title="LinkedIn Profile">
+                    <i class="fa-brands fa-linkedin-in text-sm"></i>
+                  </a>
+                  <a href="https://github.com/Ayman246" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white transition-colors" title="GitHub Profile (Ayman246)">
+                    <i class="fa-brands fa-github text-sm"></i>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Contact Right: Interactive Direct Message Box -->
+          <div class="lg:col-span-6 bg-silicon-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl relative">
+            <h3 class="text-xl font-display font-bold text-white mb-2">Send an Inquiry or Message</h3>
+            <p class="text-xs text-slate-400 mb-6 font-mono">
+              Have an opening or project? Drop your note below:
+            </p>
+
+            <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+              <div>
+                <label for="senderName" class="block text-xs font-mono text-slate-300 mb-1">Your Name / Organization</label>
+                <input type="text" id="senderName" required placeholder="e.g. Mentor / Engineering Manager" class="w-full px-3.5 py-2.5 rounded-lg bg-slate-950 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-500 transition-colors">
+              </div>
+
+              <div>
+                <label for="senderEmail" class="block text-xs font-mono text-slate-300 mb-1">Your Email</label>
+                <input type="email" id="senderEmail" required placeholder="name@company.com" class="w-full px-3.5 py-2.5 rounded-lg bg-slate-950 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-500 transition-colors">
+              </div>
+
+              <div>
+                <label for="senderMsg" class="block text-xs font-mono text-slate-300 mb-1">Message / Discussion Topic</label>
+                <textarea id="senderMsg" rows="4" required placeholder="Let's connect regarding a Digital IC Verification internship or technical interview..." class="w-full px-3.5 py-2.5 rounded-lg bg-slate-950 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-500 transition-colors"></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-brand-600 to-cyan-600 hover:from-brand-500 hover:to-cyan-500 text-white font-medium text-sm transition-all shadow-lg shadow-brand-900/30 active:scale-[0.99] flex items-center justify-center gap-2">
+                <i class="fa-solid fa-paper-plane text-xs"></i>
+                <span>Submit Message</span>
+              </button>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-800/80 bg-silicon-950 py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-mono">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+        <span class="text-slate-400 font-semibold">Ayman Osama</span>
+        <span>· Digital IC Verification Engineer Portfolio</span>
+      </div>
+      <div>
+        Mansoura University · Faculty of Engineering (2023 – 2028)
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/Ayman246" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1.5">
+          <i class="fa-brands fa-github"></i>
+          <span>GitHub</span>
+        </a>
+        <a href="https://linkedin.com/in/ayman-osama-854aaa317" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-cyan-400 transition-colors flex items-center gap-1.5">
+          <i class="fa-brands fa-linkedin"></i>
+          <span>LinkedIn</span>
+        </a>
+        <a href="#hero" class="text-cyan-400 hover:text-cyan-300 transition-colors">Back to Top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- PROJECT INSPECTION MODAL -->
+  <div id="projectModal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+    <div class="relative w-full max-w-2xl bg-silicon-900 border border-slate-700 rounded-2xl p-6 sm:p-8 shadow-2xl space-y-6 my-8">
+      
+      <!-- Close Button -->
+      <button onclick="closeProjectModal()" class="absolute top-4 right-4 p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+
+      <!-- Dynamic Content -->
+      <div id="modalContent" class="space-y-4">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <div class="pt-4 border-t border-slate-800 flex justify-end">
+        <button onclick="closeProjectModal()" class="px-5 py-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-mono">
+          Close Window
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION (No alert() used!) -->
+  <div id="toastBox" class="fixed bottom-6 right-6 z-50 pointer-events-none transform translate-y-20 opacity-0 transition-all duration-300 max-w-sm">
+    <div class="bg-slate-900 border border-cyan-500/80 text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg bg-cyan-950 border border-cyan-500 flex items-center justify-center text-cyan-400 shrink-0">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+      <div>
+        <p id="toastMsg" class="text-xs font-mono text-slate-200 font-semibold"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Component knowledge base for UVM visualizer
+    const uvmComponents = {
+      sequencer: {
+        title: "UVM Sequencer & Sequence Items",
+        role: "Stimulus Generation & Arbitration",
+        description: "The sequencer arbitrates between competing sequences and dispenses parameterized transaction items (uvm_sequence_item) upon driver request.",
+        features: [
+          "Constrained-random item generation using SystemVerilog constraint blocks",
+          "Non-blocking TLM port synchronization (seq_item_port.get_next_item)",
+          "Hierarchical sequence reuse with virtual sequencers for multi-agent synchronization"
+        ],
+        codeSnippet: `class axi_sequence extends uvm_sequence #(axi_seq_item);\n  \`uvm_object_utils(axi_sequence)\n  task body();\n    req = axi_seq_item::type_id::create("req");\n    start_item(req);\n    assert(req.randomize() with { burst_type == INCR; len < 16; });\n    finish_item(req);\n  endtask\nendclass`
+      },
+      driver: {
+        title: "UVM Driver (Active Component)",
+        role: "Protocol Pin-Level Driving",
+        description: "Pulls high-level sequence items from the sequencer via TLM FIFO and wiggles physical wires in strict compliance with the target protocol's clocking edges.",
+        features: [
+          "Drives interface signals through virtual interfaces (vif)",
+          "Handles handshaking: asserts valid and holds data steady until slave ready assertion",
+          "Injects configurable bus cycle delays and randomized wait-states"
+        ],
+        codeSnippet: `task axi_driver::drive_write(axi_seq_item item);\n  vif.awaddr  <= item.addr;\n  vif.awvalid <= 1'b1;\n  @(posedge vif.clk iff vif.awready);\n  vif.awvalid <= 1'b0;\nendtask`
+      },
+      monitor: {
+        title: "UVM Monitor & Concurrent SVA",
+        role: "Passive Observation & Protocol Assertions",
+        description: "Passively snoops bus pins, extracts completed transactions, broadcasts them via uvm_analysis_port, and checks assertions cycle-by-cycle.",
+        features: [
+          "Zero loading on DUT (inputs only, passive listener)",
+          "Checks protocol validity via concurrent SVA (e.g. stable payload during valid=1 & ready=0)",
+          "Reconstructs raw pin events back into meaningful high-level transactions"
+        ],
+        codeSnippet: `property p_valid_stable;\n  @(posedge vif.clk) disable iff (!vif.rst_n)\n  vif.valid && !vif.ready |=> $stable(vif.data);\nendproperty\nassert property (p_valid_stable);`
+      },
+      scoreboard: {
+        title: "UVM Scoreboard, RAL & Coverage Collector",
+        role: "Self-Checking & Functional Metrics",
+        description: "Receives monitored transactions, compares actual DUT behavior against a golden reference model, updates register state, and measures covergroups.",
+        features: [
+          "Automated self-checking with in-order/out-of-order transaction matching",
+          "Coverage collection across cross-bins, burst boundaries, and configuration states",
+          "Register Abstraction Layer (RAL) synchronization using frontdoor/backdoor DPI"
+        ],
+        codeSnippet: `covergroup axi_cov_grp;\n  burst_cp: coverpoint item.burst_type {\n    bins fixed = {2'b00};\n    bins incr  = {2'b01};\n    bins wrap  = {2'b10};\n  }\n  len_cp: coverpoint item.len { bins b_short = {[0:3]}; bins b_long = {[4:15]}; }\n  cross burst_cp, len_cp;\nendgroup`
+      }
+    };
+
+    // Initialize UVM component inspector
+    function selectUvmComponent(key) {
+      const comp = uvmComponents[key];
+      if (!comp) return;
+
+      // Update active highlight classes
+      document.querySelectorAll('.uvm-card').forEach(el => {
+        el.classList.remove('border-brand-500', 'border-cyan-500', 'border-emerald-500', 'border-violet-500');
+        el.classList.add('border-slate-800');
+      });
+
+      const card = document.getElementById('card-' + key);
+      if (card) {
+        card.classList.remove('border-slate-800');
+        card.classList.add('border-cyan-400');
+      }
+
+      const detailBox = document.getElementById('uvmDetailBox');
+      detailBox.innerHTML = `
+        <div class="space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+            <div>
+              <span class="text-xs font-mono text-cyan-400 font-semibold tracking-wider uppercase">Active Component: ${comp.role}</span>
+              <h3 class="text-xl font-display font-bold text-white">${comp.title}</h3>
+            </div>
+            <span class="px-3 py-1 rounded bg-slate-900 border border-slate-800 text-xs font-mono text-slate-300 self-start sm:self-auto">
+              SystemVerilog UVM Class
+            </span>
+          </div>
+
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">${comp.description}</p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+            <div>
+              <h4 class="text-xs font-mono text-slate-400 uppercase tracking-wider mb-2">Key Responsibilities:</h4>
+              <ul class="space-y-1.5 text-xs text-slate-300">
+                ${comp.features.map(f => `<li class="flex items-start gap-2"><i class="fa-solid fa-chevron-right text-cyan-400 text-[10px] mt-1"></i><span>${f}</span></li>`).join('')}
+              </ul>
+            </div>
+            <div>
+              <h4 class="text-xs font-mono text-slate-400 uppercase tracking-wider mb-2">Verilog / SVA Code Snippet:</h4>
+              <pre class="p-3 rounded-lg bg-silicon-950 border border-slate-800 text-[11px] font-mono text-emerald-400 overflow-x-auto"><code>${comp.codeSnippet}</code></pre>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Modal data for featured projects
+    const projectDetails = {
+      axi4: {
+        title: "AXI4 Memory-Mapped Slave Verification Testbench",
+        tags: ["SystemVerilog", "UVM 1.2", "SVA", "QuestaSim"],
+        summary: "Exhaustive functional verification of an AMBA AXI4-Lite and Full Memory-Mapped Slave RTL module.",
+        challenge: "Validating non-blocking valid/ready handshakes across arbitrary latency conditions, bursts up to 256 beats, narrow transfers, and wrap-around address calculations without deadlock.",
+        solution: "Formulated a structured UVM testbench with parameterized sequences generating legal and illegal transactions, backed by an autonomous monitor recording bus cycles into covergroups and checking stability assertions.",
+        coverage: "100% functional coverage on burst type x burst length x transfer size, 0 protocol violations recorded during multi-million cycle stress regressions."
+      },
+      uart: {
+        title: "UART Transmitter Protocol Verification Environment",
+        tags: ["SystemVerilog", "OOP", "Assertions (SVA)", "Timing Verification"],
+        summary: "Object-oriented testbench validating transmitter timing, frame formatting, and baud rate flexibility.",
+        challenge: "Ensuring start, payload, parity, and stop bit durations precisely match calculated baud intervals under varied clock frequencies.",
+        solution: "Built a transaction generator, driver, and sample monitor that captures serial stream bits, converts them back to parallel words, and asserts strict protocol adherence using temporal SVA properties.",
+        coverage: "Verified odd/even/no-parity configurations and detected simulated clock drift violations within 1.5% tolerance."
+      },
+      ral: {
+        title: "Register Abstraction Layer (RAL) Testbench",
+        tags: ["UVM RAL", "CSR", "Backdoor DPI", "Register Modeling"],
+        summary: "Automated verification environment for memory-mapped Control & Status Registers (CSRs).",
+        challenge: "Ensuring access policies (RO, RW, W1C, WO), default reset states, and bit-level masks match the architectural hardware specification.",
+        solution: "Built a UVM RAL model using register blocks, integrated a register adapter for protocol transaction translation, and executed regression tests exercising both frontdoor bus cycles and backdoor backdoor accesses.",
+        coverage: "Executed uvm_reg_bit_bash and reset sequences; caught incorrect reset values and unauthorized write leaks."
+      }
+    };
+
+    function openProjectModal(key) {
+      const p = projectDetails[key];
+      if (!p) return;
+
+      const modalContent = document.getElementById('modalContent');
+      modalContent.innerHTML = `
+        <div class="space-y-3">
+          <div class="flex flex-wrap gap-2 mb-1">
+            ${p.tags.map(t => `<span class="px-2.5 py-0.5 rounded bg-slate-950 border border-slate-800 text-[11px] font-mono text-cyan-400 font-semibold">${t}</span>`).join('')}
+          </div>
+          <h3 class="text-2xl font-display font-bold text-white">${p.title}</h3>
+          <p class="text-sm text-slate-300 leading-relaxed">${p.summary}</p>
+
+          <div class="space-y-3 pt-2 text-xs">
+            <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800">
+              <span class="font-mono text-cyan-400 font-semibold block mb-1">Verification Challenge:</span>
+              <p class="text-slate-300">${p.challenge}</p>
+            </div>
+            <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800">
+              <span class="font-mono text-emerald-400 font-semibold block mb-1">Architecture &amp; Methodology:</span>
+              <p class="text-slate-300">${p.solution}</p>
+            </div>
+            <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800">
+              <span class="font-mono text-violet-400 font-semibold block mb-1">Coverage &amp; Results:</span>
+              <p class="text-slate-300">${p.coverage}</p>
+            </div>
+          </div>
+        </div>
+      `;
+
+      document.getElementById('projectModal').classList.remove('hidden');
+    }
+
+    function closeProjectModal() {
+      document.getElementById('projectModal').classList.add('hidden');
+    }
+
+    // Non-intrusive Clipboard copy tool (uses document.execCommand for iframe compatibility)
+    function copyToClipboard(text, message) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.setAttribute('readonly', '');
+      textarea.style.position = 'absolute';
+      textarea.style.left = '-9999px';
+      document.body.appendChild(textarea);
+      textarea.select();
+      
+      try {
+        document.execCommand('copy');
+        showToast(message || 'Copied to clipboard!');
+      } catch (err) {
+        showToast('Failed to copy. Please manually copy: ' + text);
+      }
+      
+      document.body.removeChild(textarea);
+    }
+
+    // Friendly Toast notification system without alert()
+    function showToast(msg) {
+      const toast = document.getElementById('toastBox');
+      const textEl = document.getElementById('toastMsg');
+      textEl.innerText = msg;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      
+      setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3500);
+    }
+
+    // Contact form handling without alert()
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('senderName').value;
+      showToast(`Thank you, ${name}! Your inquiry has been noted. Please also feel free to email directly.`);
+      document.getElementById('contactForm').reset();
+    }
+
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Close modal when clicking outside box
+    window.addEventListener('click', (e) => {
+      const modal = document.getElementById('projectModal');
+      if (e.target === modal) {
+        closeProjectModal();
+      }
+    });
+
+    // Handle avatar load fallback
+    function handleAvatarError(img) {
+      // Check if user previously saved a photo in localStorage for preview
+      const savedPhoto = localStorage.getItem('ayman_portfolio_avatar');
+      if (savedPhoto) {
+        img.src = savedPhoto;
+        return;
+      }
+      img.onerror = null;
+      img.src = 'https://placehold.co/400x400/0f172a/38bdf8?text=Ayman+Osama';
+    }
+
+    // Save & apply image source to DOM and localStorage
+    function applyAvatarData(dataUrl) {
+      const avatar = document.getElementById('profileAvatar');
+      if (avatar) {
+        avatar.src = dataUrl;
+        try {
+          localStorage.setItem('ayman_portfolio_avatar', dataUrl);
+        } catch (e) {
+          // Quota handling
+        }
+        showToast('Portrait photo loaded & saved to preview!');
+      }
+    }
+
+    // Client-side avatar loader for immediate photo preview
+    function previewAvatar(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          applyAvatarData(e.target.result);
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    // Drag-and-drop support directly on the avatar
+    const dropZone = document.getElementById('avatarDropZone');
+    if (dropZone) {
+      ['dragenter', 'dragover'].forEach(eventName => {
+        dropZone.addEventListener(eventName, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          dropZone.classList.add('scale-105', 'ring-2', 'ring-cyan-400');
+        }, false);
+      });
+
+      ['dragleave', 'drop'].forEach(eventName => {
+        dropZone.addEventListener(eventName, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          dropZone.classList.remove('scale-105', 'ring-2', 'ring-cyan-400');
+        }, false);
+      });
+
+      dropZone.addEventListener('drop', (e) => {
+        const dt = e.dataTransfer;
+        const file = dt.files[0];
+        if (file && file.type.startsWith('image/')) {
+          const reader = new FileReader();
+          reader.onload = function(evt) {
+            applyAvatarData(evt.target.result);
+          };
+          reader.readAsDataURL(file);
+        }
+      }, false);
+    }
+
+    // Initialize default active UVM component and saved avatar on load
+    window.addEventListener('DOMContentLoaded', () => {
+      selectUvmComponent('sequencer');
+      
+      const savedPhoto = localStorage.getItem('ayman_portfolio_avatar');
+      if (savedPhoto) {
+        const avatar = document.getElementById('profileAvatar');
+        if (avatar) avatar.src = savedPhoto;
+      }
+    });
+  </script>
+</body>
+</html>
